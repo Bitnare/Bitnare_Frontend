@@ -5,8 +5,6 @@ $(document).ready(function() {
         var description = $("#description").val();
         var date = $("#date").val();
         var formData = new FormData(this);
-        console.log(image);
-
         if (image.length > 0) {
             formData.append("postimage", image);
         }
@@ -26,9 +24,17 @@ $(document).ready(function() {
 
 
             success: function(result, status) {
+                if (result.message === 'Post added Sucessfully') {
+                    alert("Post created sucessfully");
+                    window.location.href = "addpost.html";
 
-                //console.log(result);
-                // $('#message').html(result.message);
+
+                } else {
+                    alert("Error creating Posts")
+                }
+
+
+
             },
 
             error: function(jqXHR, status) {
